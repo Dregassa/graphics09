@@ -31,11 +31,13 @@ pixel 0, 0 located at the lower left corner of the screen
 ====================*/
 void plot(screen s, zbuffer zb, color c, int x, int y, double z) {
   int newy = YRES - 1 - y;
-  if ( x >= 0 && x < XRES && newy >=0 && newy < YRES )
-	if (z >= zb[x][y]){ // >= if i want to change a coordinate on the screen
-		s[x][newy] = c;
-		zb[x][y] = z;
+  if ( x >= 0 && x < XRES && newy >=0 && newy < YRES ){
+	  if (z > zb[x][y]){ 
+		  s[x][newy] = c;
+		  zb[x][y] = z;
+    }
 	}
+
 }
 
 /*======== void clear_screen() ==========
